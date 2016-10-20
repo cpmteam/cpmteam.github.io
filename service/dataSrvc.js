@@ -21,7 +21,7 @@ app.factory('DataSrvc', function($http, $q, $location) {
 			return deferred.promise;
 		},
 		getData: function(cb){
-            var url = 'https://crossorigin.me/https://cpmisc.smileupps.com/-/all';
+            var url = 'https://cpmisc.smileupps.com/-/all';
             if ($location.hasUrlArgument('local')) {
                 url = 'test/repo.json';
                 console.log('local JSON');
