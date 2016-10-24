@@ -25,6 +25,8 @@ app.factory('DataSrvc', function($http, $q, $location) {
             if ($location.hasUrlArgument('local')) {
                 url = 'test/repo.json';
                 console.log('local JSON');
+            } else if ($location.host().indexOf('127.0.0.1.xip.io') !== -1) {
+				url = $location.protocol() + '://registry.127.0.0.1.xip.io/-/all'; 
             } else {
                 console.log('remote JSON');
             }
