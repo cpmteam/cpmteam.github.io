@@ -1,10 +1,10 @@
-app.controller('MainCtrl', ['$scope', '$http', 'DataSrvc', '$location', function($scope, $http, DataSrvc, $location){
+angular.module('app').controller('MainCtrl', ['$scope', '$http', 'DataSrvc', '$location', function($scope, $http, DataSrvc, $location){
 	$scope.data = [];
 	$scope.sourceData = [];
 	$scope.numLimit = 3;
 
-	DataSrvc.getData(function(data){
-		for (item in data) {
+	DataSrvc.getData(function(data) {
+		for (let item in data) {
 			if (item != '_updated'){
 				data[item].latest = data[item]['dist-tags'].latest
 				$scope.sourceData.push(data[item]);

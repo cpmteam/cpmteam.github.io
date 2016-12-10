@@ -1,0 +1,43 @@
+<!--<div flex-sm="100" flex-md="100" flex-gt-md="80" flex-gt-lg="66">-->
+
+<div flex>
+    <md-input-container md-no-float class="md-primary md-block">
+        <input placeholder="Search" ng-model="term" ng-keyup="$event.keyCode==13 && enter(term)" ng-change="enter(term)">
+    </md-input-container>
+
+    <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+                md-row-height="10:5" md-row-height-sm="10:4" md-row-height-xs="10:3"
+                md-gutter="8px">
+    <md-grid-tile ng-repeat="item in data | limitTo:numLimit " ng-click="locate('repo/'+item.name)"
+                   class="md-whiteframe-z3" style="cursor: pointer;">
+        <md-grid-tile-header><h3>{{item.name}}</h3></md-grid-tile-header>
+        <div layout="row" layout-align="start stretch" layout-fill style="padding-top: 50px;">
+          <i class="material-icons md-48">face</i>
+          <div layout="column">
+            <div ng-if="item.author">author: {{item.author.name}}</div>
+            <div>version: {{item.latest}}</div>
+          </div>
+        </div>
+    </md-grid-tile>
+
+  </md-grid-list>
+</div>
+
+<md-list>
+  <md-subheader class="md-no-sticky">all known packages</md-subheader>
+  <md-list-item class="md-3-line" ng-repeat="item in data | orderBy:name">
+    <!--<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}">-->
+    <i class="material-icons md-36 md-avatar">face</i>
+
+    <div class="md-list-item-text" layout="column"
+         style="cursor: pointer;" ng-click="locate('repo/'+item.name)">
+      <h3>
+        {{ item.name }}@{{ item.latest }}
+        </h3>
+      <h4>{{ item.author.name }}</h4>
+      <p>{{ item.description }}</p>
+    </div>
+  <md-divider></md-divider>
+  </md-list-item>
+</md-list>
+<!--</div>-->

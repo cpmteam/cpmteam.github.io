@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('DataSrvc', function($http, $q, $location) {
+angular.module('app').factory('DataSrvc', function($http, $q, $location) {
     $location.hasUrlArgument = function(name) {
         var object = $location.search();
         return object.hasOwnProperty(name) && !!object[name];

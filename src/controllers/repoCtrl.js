@@ -1,4 +1,4 @@
-app.controller('RepoCtrl', ['$scope', 'DataSrvc', '$routeParams', function($scope, DataSrvc, $routeParams){
+angular.module('app').controller('RepoCtrl', ['$scope', 'DataSrvc', '$routeParams', function($scope, DataSrvc, $routeParams){
 	$scope.sourceData = [];
 	$scope.readmeText = '';
 
