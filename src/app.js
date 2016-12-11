@@ -5,7 +5,7 @@ import 'angular-material/angular-material.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'material-design-icons/iconfont/material-icons.css';
 import 'source-sans-pro/source-sans-pro.css';
-import './css/default.css';
+import './css/default.scss';
 
 window.$ = window.jQuery = require('jquery');
 import 'typed.js';
