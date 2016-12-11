@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+    - stable
+
+branches:
+    only:
+        - source
+env:
+    global:
+        - ENCRYPTION_LABEL="8edea3cdd935"
+        - COMMIT_AUTHOR_EMAIL="mrdaimor@gmail.com"
+script: bash ./deploy.sh
