@@ -1,127 +1,139 @@
 h1, h2, h3, h4, h5 {
-    /* font-family: 'Open Sans', sans-serif; font-weight: 700;  */
-    font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
-    line-height: 1.4em;
-}
-h1 {
-    margin: 0;
-    padding: 20px 0 0 0;
-    font-size: 280% !important;
-    letter-spacing: -0.05em !important;
-    font-weight: 300 !important;
+  font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
+  line-height: 1.4em;
 }
 
-h1.md-display-3 {
+h1 {
+  margin: 0;
+  padding: 20px 0 0 0;
+  font-size: 280% !important;
+  letter-spacing: -0.05em !important;
+  font-weight: 300 !important;
+  &.md-display-3 {
     letter-spacing: -0.08em !important;
+  }
 }
+
 h2 {
-    font-size: 34px !important;
-    font-weight: 500 !important;
+  font-size: 34px !important;
+  font-weight: 500 !important;
 }
+
 h3 {
-    font-size: 24px !important;
-    font-weight: 600 !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
 }
 
 body {
-    height: 100%;
-    font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
-    /* font-family: Merriweather, Garamond, Georgia, serif;  */
-    line-height: 1.5em;
-    /* color: #222222;  */
-    letter-spacing: .01rem;
-    hyphens: none;
-    -webkit-hyphens: none;
+  height: 100%;
+  font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
+  /* font-family: Merriweather, Garamond, Georgia, serif;  */
+  line-height: 1.5em;
+  /* color: #222222;  */
+  letter-spacing: .01rem;
+  hyphens: none;
 }
+
 .ribbon-container {
-    position: fixed;
-    right: 0px;
-    top: 0px;
-    width: 190px;
-    height: 190px;
-    overflow: hidden;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
 }
+
 .ribbon {
-    background-color: #a00;
-    overflow: hidden;
-    white-space: nowrap;
-    /* top left corner */
-    position: absolute;
-    right: -50px;
-    top: 40px;
-    /* 45 deg cw rotation */
-    -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-       -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-    /* shadow */
-    -webkit-box-shadow: 0 0 10px #888;
-     -moz-box-shadow: 0 0 10px #888;
-          box-shadow: 0 0 10px #888;
-}
-.ribbon a {
-  border: 1px solid #faa;
-  color: #fff;
-  display: block;
-  font: bold 81.25% 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  margin: 1px 0;
-  padding: 10px 50px;
-  text-align: center;
-  text-decoration: none;
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  right: -50px;
+  top: 40px;
+  /* 45 deg cw rotation */
+  transform: rotate(45deg);
   /* shadow */
-  text-shadow: 0 0 6px #444;
+  box-shadow: 0 0 10px #888;
+  a {
+    border: 1px solid #faa;
+    color: #fff;
+    display: block;
+    font: bold 81.25% 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    margin: 1px 0;
+    padding: 10px 50px;
+    text-align: center;
+    text-decoration: none;
+    /* shadow */
+    text-shadow: 0 0 6px #444;
+  }
 }
 
 /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.material-icons {
+  &.md-18 {
+    font-size: 18px;
+  }
+  &.md-24 {
+    font-size: 24px;
+  }
+  &.md-36 {
+    font-size: 36px;
+  }
+  &.md-48 {
+    font-size: 48px;
+  }
+  &.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+    &.md-inactive {
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+  &.md-light {
+    color: rgba(255, 255, 255, 1);
+    &.md-inactive {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
 
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
-
-/* typed.js */
+/* Rules for using icons as black on a light background.
+ * Rules for using icons as white on a dark background.
+ * typed.js */
 #typed {
-    color: antiquewhite;
+  color: antiquewhite;
 }
+
 .text-shadow {
-    text-shadow: #464646 0px 3px 6px;
+  text-shadow: #464646 0px 3px 6px;
 }
-.typed-cursor{
+
+.typed-cursor {
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
     opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* angular + bootstrap */
-.nav, .pagination, .carousel, .panel-title a { 
-    cursor: pointer; 
+
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
 }
 
-md-toolbar a:hover  {
-    text-decoration: none;
-    color: inherit;
+md-toolbar a:hover {
+  text-decoration: none;
+  color: inherit;
 }
