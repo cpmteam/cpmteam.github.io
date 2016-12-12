@@ -19,35 +19,35 @@ import 'angular-marked';
 import 'angular-bootstrap';
 
 let app = angular.module('app', [
-	'ngRoute',
-	'ngMaterial',
-	'ui.bootstrap',
-	'hc.marked'
+  'ngRoute',
+  'ngMaterial',
+  'ui.bootstrap',
+  'hc.marked'
 ]);
 
-app.config(function($mdThemingProvider) {
+app.config(['$mdThemingProvider', function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue-grey')
     .accentPalette('teal');
-});
+}]);
 
 app.config(['markedProvider', function(markedProvider) {
   markedProvider.setOptions({gfm: true});
 }]);
 
 app.config(['$routeProvider', function($routeProvider) {
-	$routeProvider
-		.when('/', 
-		{
-			template: require('./templates/main-flex.html'),
-			controller: 'MainCtrl',
-		})
-		.when('/repo/:name', 
-		{
-			template: require('./templates/repo.html'), 
-			controller: 'RepoCtrl',
-		})
-		.otherwise({redirectTo: '/'});
+  $routeProvider
+    .when('/', 
+    {
+      template: require('./templates/main-flex.html'),
+      controller: 'MainCtrl',
+    })
+    .when('/repo/:name', 
+    {
+      template: require('./templates/repo.html'), 
+      controller: 'RepoCtrl',
+    })
+    .otherwise({redirectTo: '/'});
 }]);
 
 // Services
@@ -59,9 +59,9 @@ let controllers = require.context('./controllers', true, /.js$/);
 controllers.keys().forEach(controllers);
 
 $("#typed").typed({
-		strings: ["Caché", "Community"],
-		typeSpeed: 30,
-		backDelay: 1500,
-		loop: false,
-		loopCount: 3
-	});
+    strings: ["Caché", "Community"],
+    typeSpeed: 30,
+    backDelay: 1500,
+    loop: false,
+    loopCount: 3
+  });
