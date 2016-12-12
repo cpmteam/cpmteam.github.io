@@ -1,12 +1,18 @@
 language: node_js
 node_js:
-    - stable
+  - stable
+
+cache:
+  directories:
+    - node_modules
 
 branches:
-    only:
-        - source
+  only:
+    - source
+
 env:
-    global:
-        - ENCRYPTION_LABEL="8edea3cdd935"
-        - COMMIT_AUTHOR_EMAIL="mrdaimor@gmail.com"
+  global:
+    - ENCRYPTION_LABEL="8edea3cdd935"
+    - COMMIT_AUTHOR_EMAIL="mrdaimor@gmail.com"
+
 script: bash ./deploy.sh
