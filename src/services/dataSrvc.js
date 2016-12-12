@@ -1,4 +1,4 @@
-angular.module('app').service('DataSrvc', ['$http', '$q', '$location', function ($http, $q, $location) {
+angular.module('app').factory('DataSrvc', ['$http', '$q', '$location', function ($http, $q, $location) {
     $location.hasUrlArgument = function (name) {
       var object = $location.search();
       return object.hasOwnProperty(name) && !!object[name];
@@ -9,10 +9,10 @@ angular.module('app').service('DataSrvc', ['$http', '$q', '$location', function 
         var deferred = $q.defer();
 
         $http(config)
-          .success(function (data, status, headers, config) {
-            deferred.resolve(data);
+          .then(function (data, status, headers, config) {
+            deferred.resolve(data.data);
           })
-          .error(function (data, status, headers, config) {
+          .catch(function (data, status, headers, config) {
             deferred.reject(data, status, headers, config);
           });
 
@@ -29,11 +29,11 @@ angular.module('app').service('DataSrvc', ['$http', '$q', '$location', function 
           console.log('remote JSON');
         }
         $http.get(url, { cache: true })
-          .success(function (data) {
+          .then(function (data) {
             console.log('SUCCESS')
-            cb(data);
+            cb(data.data);
           })
-          .error(function (data) {
+          .catch(function (data) {
             console.log('ERROR');
           })
 
