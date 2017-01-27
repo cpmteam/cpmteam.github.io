@@ -3,9 +3,13 @@ angular.module('app').controller('RepoCtrl', ['$scope', 'DataSrvc', '$routeParam
   $scope.readmeText = '';
 
   DataSrvc.getData(function (data) {
-    $scope.data = data[$routeParams.name];
-    $scope.readmeText = $scope.data.readmeText;
-    console.log($scope.readmeText);
+    var packageName = $routeParams.name;
+    $scope.data = data[packageName];
+
+    DataSrvc.getUrlData('https://cpmisc.smileupps.com/' + packageName + '/latest', function(data) {
+      $scope.readmeText = data.readmeText;
+      console.log($scope.readmeText);
+    });
   })
 
 }]);

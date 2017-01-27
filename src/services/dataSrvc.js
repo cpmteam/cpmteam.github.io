@@ -38,5 +38,16 @@ angular.module('app').factory('DataSrvc', ['$http', '$q', '$location', function 
           })
 
       },
+      getUrlData: function (url, cb) {
+        $http.get(url, { cache: true })
+          .then(function (data) {
+            console.log('SUCCESS : ', url)
+            cb(data.data);
+          })
+          .catch(function (data) {
+            console.log('ERROR : ', url);
+          })
+
+      },
     }
   }]);
