@@ -86705,10 +86705,11 @@ angular.module('app').controller('MainCtrl', ['$scope', '$http', 'DataSrvc', '$l
   $scope.numLimit = 3;
 
   DataSrvc.getData(function (data) {
-    for (var item in data) {
+    var localData = data.data;
+    for (var item in localData) {
       if (item != '_updated') {
-        data[item].latest = data[item]['dist-tags'].latest;
-        $scope.sourceData.push(data[item]);
+        localData[item].latest = localData[item]['dist-tags'].latest;
+        $scope.sourceData.push(localData[item]);
       }
     }
     $scope.data = $scope.sourceData;
@@ -86742,10 +86743,23 @@ angular.module('app').controller('RepoCtrl', ['$scope', 'DataSrvc', '$routeParam
   $scope.sourceData = [];
   $scope.readmeText = '';
 
+  function getSiteUrl(uri) {
+    return uri.split('/', 3).join('/');
+  }
   DataSrvc.getData(function (data) {
-    $scope.data = data[$routeParams.name];
-    $scope.readmeText = $scope.data.readmeText;
-    console.log($scope.readmeText);
+    var packageName = $routeParams.name;
+    $scope.data = data.data[packageName];
+
+    if (data.readmeText) {
+      $scope.readmeText = $scope.data.readmeText;
+    } else {
+      var packageLatest = getSiteUrl(data.config.url) + '/' + packageName + '/latest';
+
+      DataSrvc.getUrlData(packageLatest, function (data) {
+        $scope.readmeText = data.data.readmeText;
+        console.log($scope.readmeText);
+      });
+    }
   });
 }]);
 
@@ -86786,9 +86800,17 @@ angular.module('app').factory('DataSrvc', ['$http', '$q', '$location', function 
       }
       $http.get(url, { cache: true }).then(function (data) {
         console.log('SUCCESS');
-        cb(data.data);
+        cb(data);
       }).catch(function (data) {
         console.log('ERROR');
+      });
+    },
+    getUrlData: function getUrlData(url, cb) {
+      $http.get(url, { cache: true }).then(function (data) {
+        console.log('SUCCESS : ', url);
+        cb(data);
+      }).catch(function (data) {
+        console.log('ERROR : ', url);
       });
     }
   };
