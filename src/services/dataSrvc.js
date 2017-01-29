@@ -31,10 +31,21 @@ angular.module('app').factory('DataSrvc', ['$http', '$q', '$location', function 
         $http.get(url, { cache: true })
           .then(function (data) {
             console.log('SUCCESS')
-            cb(data.data);
+            cb(data);
           })
           .catch(function (data) {
             console.log('ERROR');
+          })
+
+      },
+      getUrlData: function (url, cb) {
+        $http.get(url, { cache: true })
+          .then(function (data) {
+            console.log('SUCCESS : ', url)
+            cb(data);
+          })
+          .catch(function (data) {
+            console.log('ERROR : ', url);
           })
 
       },

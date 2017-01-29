@@ -2,10 +2,23 @@ angular.module('app').controller('RepoCtrl', ['$scope', 'DataSrvc', '$routeParam
   $scope.sourceData = [];
   $scope.readmeText = '';
 
+  function getSiteUrl(uri) {
+    return uri.split('/',3).join('/')
+  }
   DataSrvc.getData(function (data) {
-    $scope.data = data[$routeParams.name];
-    $scope.readmeText = $scope.data.readmeText;
-    console.log($scope.readmeText);
+    var packageName = $routeParams.name;
+    $scope.data = data.data[packageName];
+
+    if (data.readmeText) {
+        $scope.readmeText = $scope.data.readmeText;
+    } else {
+      var packageLatest = getSiteUrl(data.config.url) + '/' + packageName + '/latest';
+
+      DataSrvc.getUrlData(packageLatest, function(data) {
+        $scope.readmeText = data.data.readmeText;
+        console.log($scope.readmeText);
+      });
+    }
   })
 
 }]);

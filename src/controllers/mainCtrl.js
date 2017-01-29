@@ -4,10 +4,11 @@ angular.module('app').controller('MainCtrl', ['$scope', '$http', 'DataSrvc', '$l
   $scope.numLimit = 3;
 
   DataSrvc.getData(function(data) {
-    for (let item in data) {
+    var localData = data.data;
+    for (let item in localData) {
       if (item != '_updated'){
-        data[item].latest = data[item]['dist-tags'].latest
-        $scope.sourceData.push(data[item]);
+        localData[item].latest = localData[item]['dist-tags'].latest
+        $scope.sourceData.push(localData[item]);
       }
     }
     $scope.data= $scope.sourceData
