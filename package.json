@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
+    "server:docker": "npm run server -- --host 0.0.0.0 --port 80",
     "clean": "rimraf build",
     "build": "rimraf build/* && webpack --progress"
   },
