@@ -1,1 +1,4 @@
 css/github-markdown.css
+node_modules/
+.npm-cache
+build/

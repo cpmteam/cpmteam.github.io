@@ -77,6 +77,9 @@ module.exports = {
     setImmediate: false
   },
   devServer: {
-    inline: true
+    inline: true,
+    watchOptions: {
+      poll: true
+    }
   }
 };
